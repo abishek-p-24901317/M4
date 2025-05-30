@@ -105,7 +105,7 @@ int main() {
 char str[100];
 int i;
 printf("Enter a string: ");
-fgets(str);
+fgets(str, sizeof(str), stdin);
 for (i = 0; str[i] != '\0'; i++) {
 str[i] = tolower(str[i]);
 }
@@ -144,7 +144,8 @@ int main() {
 char str[100];
 int i = 0, count = 1;
 printf("Enter a string: ");
-gets(str);
+fgets(str, sizeof(str), stdin);
+str[strcspn(str, "\n")] = '\0';
 do {
 if (str[i] == ' ' && str[i+1] != ' ' && str[i+1] != '\0') {
 count++;
@@ -195,18 +196,34 @@ End the program.
 
 ## PROGRAM
 ```
-int flag = 0, i = 0;
-while (c1[i] != '\0' || c2[i] != '\0') {
-    if (c1[i] != c2[i]) {
-        flag = 1;
-        break;
+#include <stdio.h>
+
+int main() {
+    char c1[100], c2[100];
+    int flag = 0, i = 0;
+
+    printf("Enter the first string: ");
+    scanf(" %[^\n]", c1);
+    getchar(); // consume newline
+
+    printf("Enter the second string: ");
+    scanf(" %[^\n]", c2);
+
+    while (c1[i] != '\0' || c2[i] != '\0') {
+        if (c1[i] != c2[i]) {
+            flag = 1;
+            break;
+        }
+        i++;
     }
-    i++;
+
+    if (flag == 0)
+        printf("Strings are same.\n");
+    else
+        printf("Strings are not same.\n");
+
+    return 0;
 }
-if (flag == 0)
-    printf("Strings are same.\n");
-else
-    printf("Strings are not same.\n");
 ```
 
 ## OUTPUT
