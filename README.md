@@ -228,6 +228,7 @@ int main() {
 
 ## OUTPUT
  ![image](https://github.com/user-attachments/assets/a138bf2d-0e22-49f6-9a89-045bba5e42f4)
+![image](https://github.com/user-attachments/assets/5cd602bc-f0c8-4a28-a159-607f81e91ac1)
 
 
 
